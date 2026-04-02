@@ -249,12 +249,7 @@ const items = [
 
 const quantities = new Array(items.length).fill(0);
 
-  
-function changeQty(index, delta) {
-  if (items[index].stock === "N") return; // 🚫 block if out of stock
 
-  // your existing logic here...
-}
 
 
   
@@ -321,6 +316,7 @@ function renderProducts() {
 function changeQty(i, dir) {
   const item = items[i];
   let cur = quantities[i];
+   if (items[i].Stock === "N") return; // 🚫 block if out of stock
   cur = dir === 1 ? cur + item.step : Math.max(0, cur - item.step);
   quantities[i] = cur;
   document.getElementById('qd_' + i).textContent = dispQtyStr(i);
