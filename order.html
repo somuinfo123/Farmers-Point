@@ -283,6 +283,7 @@ function renderProducts() {
   const list = document.getElementById('productList');
   list.innerHTML = '';
   items.forEach((item, i) => {
+    const isOut = item.stock === "N"; // check stock
     const row = document.createElement('div');
     row.className = 'product-row';
     row.innerHTML =
@@ -294,8 +295,12 @@ function renderProducts() {
           '<span class="rate-tag">' + item.rate + '</span>' +
           '<span class="rate-unit">' + item.unit + '</span>' +
         '</div>' +
+       '<div style="margin-top:5px; font-size:12px; font-weight:bold; color:' + (isOut ? 'red' : 'lightgreen') + ';">' +
+          (isOut ? 'Out of Stock' : 'In Stock') +
+        '</div>' +
       '</div>' +
       '<div class="qty-control">' +
+        '<button class="qty-btn" ' + (isOut ? 'disabled' : '') +
         '<button class="qty-btn" onclick="changeQty(' + i + ',-1)">&#8722;</button>' +
         '<div class="qty-display" id="qd_' + i + '">0</div>' +
         '<button class="qty-btn" onclick="changeQty(' + i + ',1)">+</button>' +
@@ -322,7 +327,8 @@ function renderCart() {
   let html = '', total = 0, hasItems = false;
 
   items.forEach((item, i) => {
-    if (quantities[i] > 0) {
+    if (quantities[i] > 0) 
+    {
       hasItems = true;
       const price = calcPrice(i);
       total += price;
