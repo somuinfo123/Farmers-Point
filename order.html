@@ -249,6 +249,15 @@ const items = [
 
 const quantities = new Array(items.length).fill(0);
 
+  
+function changeQty(index, delta) {
+  if (items[index].stock === "N") return; // 🚫 block if out of stock
+
+  // your existing logic here...
+}
+
+
+  
 function dispQtyStr(i) {
   const v = quantities[i];
   const item = items[i];
