@@ -252,7 +252,6 @@ const quantities = new Array(items.length).fill(0);
 function dispQtyStr(i) {
   const v = quantities[i];
   const item = items[i];
-  if(item.Stock == 'N') return '0';
   if (v === 0) return '0';
   if (item.unitLabel === 'kg') {
     if (item.step === 1) return v + 'kg';
@@ -264,7 +263,6 @@ function dispQtyStr(i) {
 
 function calcPrice(i) {
   const item = items[i];
-  if(item.Stock == 'N') return '0';
   const v = quantities[i];      // quantity in grams, kg, or L
 
   // step=500 => rate is per 500g (0.5kg), multiply by how many 500g units
