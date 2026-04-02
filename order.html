@@ -283,7 +283,7 @@ function renderProducts() {
   const list = document.getElementById('productList');
   list.innerHTML = '';
   items.forEach((item, i) => {
-    const isOut = item.stock === "N"; // check stock
+    const isOut = item.Stock === "N"; // check stock
     const row = document.createElement('div');
     row.className = 'product-row';
     row.innerHTML =
