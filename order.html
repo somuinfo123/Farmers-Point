@@ -234,17 +234,17 @@ document.getElementById('logoImg').src = 'data:image/png;base64,' + LOGO_B64;
 
 // ── PRODUCT DATA ──
 const items = [
-  {name: "ಹೆಸರು ಬೇಳೆ",        sub: "Green Gram Dal",      qty: "500g",  rate: 68,  unit: "/0.5kg",   step: 500, unitLabel: "g" },
-  { name: "ತೊಗರಿ ಬೇಳೆ",       sub: "Toor Dal",            qty: "500g",  rate: 65,  unit: "/0.5kg",   step: 500, unitLabel: "g"  },
-  { name: "ಉದ್ದಿನ ಬೇಳೆ",       sub: "Urad Dal",            qty: "500g",  rate: 65,  unit: "/0.5kg",   step: 500, unitLabel: "g"  },
-  { name: "ಕಡಲೆ ಬೇಳೆ",        sub: "Chana Dal",           qty: "500g",  rate: 50,  unit: "/0.5 kg",  step: 500, unitLabel: "g"  },
-  { name: "ಜೋಳ",            sub: "Sorghum",             qty: "kg",    rate: 60,  unit: "/kg",       step: 1,   unitLabel: "kg" },
-  { name: "ಜವಾರಿ ಬಿಳಿ ಗೋಧಿ", sub: "Wheat",               qty: "1 kg",  rate: 60,   unit: "/kg", step: 1, unitLabel: "kg" },
-  { name: "ಕುಸುಬೆ ಎಣ್ಣೆ",      sub: "Safflower Oil",       qty: "1 L",   rate: 350,  unit: "/L",   step: 1,   unitLabel: "L"  },
-  { name: "ಜೋಳದ ರವೆ",     sub: "Jowar Rava",          qty: "1 kg",  rate: 60,  unit: "/kg",   step: 1,   unitLabel: "kg" },
-  { name: "ಗೋಧಿ ರವೆ",       sub: "Wheat Rava / Sooji",  qty: "1 kg",  rate: 56,  unit: "/kg",   step: 1,   unitLabel: "kg" },
-  { name: "ಕರಿ ಕಡಲೆ",        sub: "Black Channa",        qty: "500g",  rate: 55,  unit: "/0.5kg",   step: 500, unitLabel: "g"  },
-  { name: "ಕರಿ ಹುರುಳೆ",       sub: "Black Horse Gram",    qty: "250g",  rate: 30,  unit: "/0.25g", step: 250, unitLabel: "g"  },
+  {name: "ಹೆಸರು ಬೇಳೆ",        sub: "Green Gram Dal",      qty: "500g",  rate: 68,  unit: "/0.5kg",   step: 500, unitLabel: "g", Stock:"N" },
+  { name: "ತೊಗರಿ ಬೇಳೆ",       sub: "Toor Dal",            qty: "500g",  rate: 65,  unit: "/0.5kg",   step: 500, unitLabel: "g" , Stock:"Y" },
+  { name: "ಉದ್ದಿನ ಬೇಳೆ",       sub: "Urad Dal",            qty: "500g",  rate: 65,  unit: "/0.5kg",   step: 500, unitLabel: "g" ,,Stock:"N" },
+  { name: "ಕಡಲೆ ಬೇಳೆ",        sub: "Chana Dal",           qty: "500g",  rate: 50,  unit: "/0.5 kg",  step: 500, unitLabel: "g" ,Stock:"Y" },
+  { name: "ಜೋಳ",            sub: "Sorghum",             qty: "kg",    rate: 60,  unit: "/kg",       step: 1,   unitLabel: "kg" ,Stock:"Y"},
+  { name: "ಜವಾರಿ ಬಿಳಿ ಗೋಧಿ", sub: "Wheat",               qty: "1 kg",  rate: 60,   unit: "/kg", step: 1, unitLabel: "kg" ,Stock:"Y"},
+  { name: "ಕುಸುಬೆ ಎಣ್ಣೆ",      sub: "Safflower Oil",       qty: "1 L",   rate: 350,  unit: "/L",   step: 1,   unitLabel: "L" ,Stock:"Y" },
+  { name: "ಜೋಳದ ರವೆ",     sub: "Jowar Rava",          qty: "1 kg",  rate: 60,  unit: "/kg",   step: 1,   unitLabel: "kg",Stock:"Y" },
+  { name: "ಗೋಧಿ ರವೆ",       sub: "Wheat Rava / Sooji",  qty: "1 kg",  rate: 56,  unit: "/kg",   step: 1,   unitLabel: "kg",Stock:"Y" },
+  { name: "ಕರಿ ಕಡಲೆ",        sub: "Black Channa",        qty: "500g",  rate: 55,  unit: "/0.5kg",   step: 500, unitLabel: "g" ,Stock:"Y" },
+  { name: "ಕರಿ ಹುರುಳೆ",       sub: "Black Horse Gram",    qty: "250g",  rate: 30,  unit: "/0.25g", step: 250, unitLabel: "g" ,Stock:"N" },
 ];
 
 const quantities = new Array(items.length).fill(0);
@@ -252,6 +252,7 @@ const quantities = new Array(items.length).fill(0);
 function dispQtyStr(i) {
   const v = quantities[i];
   const item = items[i];
+  if(item.stock == 'N') return '0';
   if (v === 0) return '0';
   if (item.unitLabel === 'kg') {
     if (item.step === 1) return v + 'kg';
@@ -263,6 +264,7 @@ function dispQtyStr(i) {
 
 function calcPrice(i) {
   const item = items[i];
+  if(item.stock == 'N') return '0';
   const v = quantities[i];      // quantity in grams, kg, or L
 
   // step=500 => rate is per 500g (0.5kg), multiply by how many 500g units
