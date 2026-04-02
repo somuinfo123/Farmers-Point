@@ -273,7 +273,7 @@ function calcPrice(i) {
   // step=250 => rate is per 250g (0.25kg), multiply by how many 250g units
   // step=1, unitLabel=kg => rate is per 1kg, v is already in kg
   // step=1, unitLabel=L  => rate is per 1L, v is already in L
-
+  if(item.Stock == 'N') return 0;
   if (item.unitLabel === 'g')  return (v / item.step) * item.rate;
   if (item.unitLabel === 'kg') return v * item.rate;
   if (item.unitLabel === 'L')  return v * item.rate;
