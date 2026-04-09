@@ -411,6 +411,11 @@ function sendOrder() {
     '\n\n*Total: Rs.' + fmt(total) + '*' +
     '\n\n_Sent via Farmers Point Order Page_';
 
+const upiLink = "upi://pay?pa=yourupi@okaxis&pn=FarmersPoint&am=" + total + "&cu=INR";
+
+  message += "Please pay using below link:\n" + upiLink + "\n\n";
+  message += "Amount is already filled. Please don’t change it 🙏";
+  
   // PUT YOUR WHATSAPP NUMBER HERE (country code + number, no + or spaces)
   const shopPhone = '918722095639';
   window.open('https://wa.me/' + shopPhone + '?text=' + encodeURIComponent(msg), '_blank');
