@@ -401,7 +401,7 @@ function sendOrder() {
   }
   const nameStr = name ? '*Name:* ' + name + '\n' : '';
   const phoneStr = '*Phone:* ' + phone + '\n';
-  const upiLink = "upi://pay?pa=yourupi@okaxis&pn=FarmersPoint&am=" + fmt(total) + "&cu=INR";
+  const upiLink = "upi://pay?pa=somashekarpatil@ybl&pn=FarmersPoint&am=" + fmt(total) + "&cu=INR";
   const shopPhone = '918722095639';
   const msg = 'Farmers Point - New Order\n\n' + nameStr + phoneStr + '\n' + orderLines.join('\n') +
     '\n\n*Total: Rs.' + fmt(total) + '*' +
