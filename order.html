@@ -390,38 +390,49 @@ function sendOrder() {
   phoneField.classList.remove('error');
 
   let orderLines = [], total = 0, hasItems = false;
+
   items.forEach((item, i) => {
     if (quantities[i] > 0) {
       hasItems = true;
       const price = calcPrice(i);
       total += price;
-      orderLines.push('* ' + item.sub + ' (' + item.name + ') - ' + dispQtyStr(i) + ' - Rs.' + fmt(price));
+
+      orderLines.push(
+        '* ' + item.sub + ' (' + item.name + ') - ' +
+        dispQtyStr(i) + ' - Rs.' + fmt(price)
+      );
     }
   });
 
-  if (!hasItems) { showToast('Please add at least one item!'); return; }
+  if (!hasItems) {
+    showToast('Please add at least one item!');
+    return;
+  }
+
+  // ✅ Create UPI link FIRST
+  const upiLink = "upi://pay?pa=yourupi@okaxis&pn=FarmersPoint&am=" + total + "&cu=INR";
 
   const nameStr  = name  ? '*Name:* '  + name  + '\n' : '';
   const phoneStr = '*Phone:* ' + phone + '\n';
 
-  const msg =
+  // ✅ Build message properly
+  let msg =
     'Farmers Point - New Order\n\n' +
     nameStr + phoneStr + '\n' +
     orderLines.join('\n') +
-    '\n\n*Total: Rs.' + fmt(total) + '*' +
-    '\n\n_Sent via Farmers Point Order Page_'+
+    '\n\n*Total: Rs.' + fmt(total) + '*\n\n' +
+    'Please pay using below link:\n' + upiLink + '\n\n' +
+    'Amount is already filled. Please don’t change it 🙏\n\n' +
+    '_Sent via Farmers Point Order Page_';
 
-
-
-  "\nPlease pay using below link:\n" + upiLink + "\n\n"+
-  "\nAmount is already filled. Please don’t change it 🙏";
-  
-  // PUT YOUR WHATSAPP NUMBER HERE (country code + number, no + or spaces)
-  const upiLink = "upi://pay?pa=yourupi@okaxis&pn=FarmersPoint&am=" + total + "&cu=INR";
+  // WhatsApp send
   const shopPhone = '918722095639';
-  window.open('https://wa.me/' + shopPhone + '?text=' + encodeURIComponent(msg), '_blank');
+  window.open(
+    'https://wa.me/' + shopPhone + '?text=' + encodeURIComponent(msg),
+    '_blank'
+  );
 }
-
+  
 function showToast(msg) {
   const t = document.getElementById('toast');
   t.textContent = msg;
