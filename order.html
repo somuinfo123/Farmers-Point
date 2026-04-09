@@ -164,9 +164,388 @@ body {
   transition: transform 0.3s; z-index: 999; white-space: nowrap;
 }
 .toast.show { transform: translateX(-50%) translateY(0); }
+
+/* ── PAGE SWITCHER ── */
+#page-intro { display: block; }
+#page-order  { display: none; }
+
+/* ── INTRO PAGE ── */
+.intro-wrap {
+  min-height: 100vh;
+  background: var(--bg);
+  padding: 0 0 60px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* Hero */
+.intro-hero {
+  width: 100%;
+  max-width: 680px;
+  background: #000;
+  border-bottom: 2px solid var(--gold);
+  padding: 48px 24px 36px;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+.intro-hero::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse at 50% 0%, rgba(212,160,23,0.18) 0%, transparent 70%);
+  pointer-events: none;
+}
+.intro-logo {
+  width: 110px; height: 110px;
+  object-fit: contain;
+  border-radius: 50%;
+  border: 2px solid rgba(212,160,23,0.5);
+  margin: 0 auto 18px;
+  display: block;
+  animation: fadeUp 0.7s ease both;
+}
+.intro-brand {
+  font-family: 'Playfair Display', serif;
+  font-size: 32px;
+  font-weight: 900;
+  color: var(--gold);
+  letter-spacing: 1px;
+  animation: fadeUp 0.7s 0.1s ease both;
+}
+.intro-tagline {
+  font-size: 13px;
+  color: var(--green-bright);
+  margin-top: 4px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  animation: fadeUp 0.7s 0.2s ease both;
+}
+.intro-mission {
+  font-size: 16px;
+  color: rgba(255,255,255,0.75);
+  margin-top: 18px;
+  line-height: 1.7;
+  max-width: 480px;
+  margin-left: auto; margin-right: auto;
+  animation: fadeUp 0.7s 0.3s ease both;
+}
+
+/* Pillars */
+.intro-pillars {
+  width: 100%;
+  max-width: 680px;
+  padding: 36px 18px 0;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 14px;
+  animation: fadeUp 0.7s 0.4s ease both;
+}
+.pillar {
+  background: #111;
+  border: 1.5px solid rgba(212,160,23,0.25);
+  border-radius: 16px;
+  padding: 22px 18px;
+  text-align: center;
+  transition: border-color 0.3s, transform 0.3s;
+}
+.pillar:hover {
+  border-color: var(--gold);
+  transform: translateY(-3px);
+}
+.pillar-icon {
+  font-size: 34px;
+  margin-bottom: 10px;
+  display: block;
+}
+.pillar-title {
+  font-family: 'Playfair Display', serif;
+  font-size: 15px;
+  color: var(--gold);
+  margin-bottom: 6px;
+}
+.pillar-desc {
+  font-size: 12.5px;
+  color: var(--muted);
+  line-height: 1.6;
+}
+
+/* How it works */
+.intro-how {
+  width: 100%;
+  max-width: 680px;
+  padding: 36px 18px 0;
+  animation: fadeUp 0.7s 0.5s ease both;
+}
+.intro-section-title {
+  font-family: 'Playfair Display', serif;
+  font-size: 20px;
+  color: var(--gold);
+  text-align: center;
+  margin-bottom: 20px;
+}
+.how-steps {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  position: relative;
+}
+.how-steps::before {
+  content: '';
+  position: absolute;
+  left: 28px;
+  top: 20px;
+  bottom: 20px;
+  width: 2px;
+  background: linear-gradient(to bottom, var(--gold), transparent);
+}
+.how-step {
+  display: flex;
+  align-items: flex-start;
+  gap: 18px;
+  padding: 14px 0;
+}
+.how-num {
+  width: 38px; height: 38px;
+  border-radius: 50%;
+  background: var(--gold);
+  color: #000;
+  font-weight: 700;
+  font-size: 15px;
+  display: flex; align-items: center; justify-content: center;
+  flex-shrink: 0;
+  position: relative;
+  z-index: 1;
+}
+.how-text h4 {
+  font-size: 14px;
+  color: #fff;
+  margin-bottom: 3px;
+}
+.how-text p {
+  font-size: 12.5px;
+  color: var(--muted);
+  line-height: 1.5;
+}
+
+/* Products preview strip */
+.intro-products {
+  width: 100%;
+  max-width: 680px;
+  padding: 36px 18px 0;
+  animation: fadeUp 0.7s 0.55s ease both;
+}
+.products-strip {
+  display: flex;
+  gap: 10px;
+  overflow-x: auto;
+  padding-bottom: 6px;
+  scrollbar-width: none;
+}
+.products-strip::-webkit-scrollbar { display: none; }
+.prod-chip {
+  background: #111;
+  border: 1.5px solid rgba(212,160,23,0.3);
+  border-radius: 50px;
+  padding: 8px 16px;
+  white-space: nowrap;
+  font-size: 13px;
+  color: rgba(255,255,255,0.85);
+  flex-shrink: 0;
+}
+.prod-chip span { color: var(--gold); font-weight: 600; }
+
+/* Quote */
+.intro-quote {
+  width: 100%;
+  max-width: 680px;
+  padding: 32px 24px 0;
+  text-align: center;
+  animation: fadeUp 0.7s 0.6s ease both;
+}
+.intro-quote blockquote {
+  font-family: 'Playfair Display', serif;
+  font-size: 18px;
+  font-style: italic;
+  color: rgba(255,255,255,0.6);
+  line-height: 1.7;
+  border-left: 3px solid var(--gold);
+  padding-left: 18px;
+  text-align: left;
+}
+.intro-quote cite {
+  display: block;
+  margin-top: 10px;
+  font-size: 12px;
+  color: var(--gold);
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  font-style: normal;
+}
+
+/* CTA */
+.intro-cta {
+  width: 100%;
+  max-width: 680px;
+  padding: 36px 18px 0;
+  animation: fadeUp 0.7s 0.65s ease both;
+}
+.btn-order-now {
+  display: block;
+  width: 100%;
+  background: var(--gold);
+  color: #000;
+  font-weight: 700;
+  font-size: 17px;
+  border: none;
+  border-radius: 14px;
+  padding: 18px;
+  cursor: pointer;
+  letter-spacing: 0.5px;
+  transition: opacity 0.2s, transform 0.2s;
+}
+.btn-order-now:active { opacity: 0.85; transform: scale(0.98); }
+
+/* Back button on order page */
+.back-btn {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  background: none;
+  border: 1.5px solid rgba(212,160,23,0.4);
+  border-radius: 10px;
+  color: var(--gold);
+  font-size: 13px;
+  padding: 7px 14px;
+  cursor: pointer;
+  margin: 0 auto 16px;
+  max-width: 680px;
+  width: fit-content;
+}
+
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
 </style>
 </head>
 <body>
+<!-- ══════════════════════════════════════════
+     INTRO PAGE
+══════════════════════════════════════════ -->
+<div id="page-intro">
+  <div class="intro-wrap">
+
+    <!-- Hero -->
+    <div class="intro-hero">
+      <img class="intro-logo" id="introLogoImg" src="" alt="Farmers Point Logo">
+      <div class="intro-brand">Farmers Point</div>
+      <div class="intro-tagline">Farm Fresh · Direct to You</div>
+      <p class="intro-mission">
+        We believe every farmer deserves to be an entrepreneur —
+        and every family deserves pure, affordable food.
+        By cutting out the middleman, we connect you directly
+        to the hands that grow your food.
+      </p>
+    </div>
+
+    <!-- Pillars -->
+    <div class="intro-pillars">
+      <div class="pillar">
+        <span class="pillar-icon">🌾</span>
+        <div class="pillar-title">Farmer First</div>
+        <p class="pillar-desc">We empower farmers to become business owners — not just labourers. Fair wages, full dignity.</p>
+      </div>
+      <div class="pillar">
+        <span class="pillar-icon">🚫🤝</span>
+        <div class="pillar-title">No Middlemen</div>
+        <p class="pillar-desc">Direct farm-to-home supply chain. Zero commissions eaten away — savings passed to you.</p>
+      </div>
+      <div class="pillar">
+        <span class="pillar-icon">💰</span>
+        <div class="pillar-title">Lower Prices</div>
+        <p class="pillar-desc">Because fewer hands touch it, you pay less. Pure produce at honest prices, always.</p>
+      </div>
+      <div class="pillar">
+        <span class="pillar-icon">✅</span>
+        <div class="pillar-title">Pure Quality</div>
+        <p class="pillar-desc">No additives, no blending. Stone-milled, cold-pressed, naturally processed products.</p>
+      </div>
+    </div>
+
+    <!-- How it works -->
+    <div class="intro-how">
+      <div class="intro-section-title">How It Works</div>
+      <div class="how-steps">
+        <div class="how-step">
+          <div class="how-num">1</div>
+          <div class="how-text">
+            <h4>Farmers Grow & Process</h4>
+            <p>Local farmers in Karnataka grow, harvest and process their own produce — dals, grains, oil seeds.</p>
+          </div>
+        </div>
+        <div class="how-step">
+          <div class="how-num">2</div>
+          <div class="how-text">
+            <h4>We Package & Deliver</h4>
+            <p>Products are cleaned, packed and delivered directly — no warehouses, no resellers in between.</p>
+          </div>
+        </div>
+        <div class="how-step">
+          <div class="how-num">3</div>
+          <div class="how-text">
+            <h4>You Save & Eat Pure</h4>
+            <p>You get fresh, chemical-free food at lower prices. The farmer earns more. Everyone wins.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Products strip -->
+    <div class="intro-products">
+      <div class="intro-section-title">What We Offer</div>
+      <div class="products-strip">
+        <div class="prod-chip">🟢 Green Gram Dal <span>₹68/500g</span></div>
+        <div class="prod-chip">🟡 Toor Dal <span>₹65/500g</span></div>
+        <div class="prod-chip">⚪ Urad Dal <span>₹65/500g</span></div>
+        <div class="prod-chip">🟠 Chana Dal <span>₹50/500g</span></div>
+        <div class="prod-chip">🌾 Sorghum <span>₹50/kg</span></div>
+        <div class="prod-chip">🌾 Wheat <span>₹55/kg</span></div>
+        <div class="prod-chip">🫙 Safflower Oil <span>₹350/L</span></div>
+        <div class="prod-chip">🌾 Jowar Rava <span>₹60/kg</span></div>
+        <div class="prod-chip">🌾 Wheat Rava <span>₹56/kg</span></div>
+        <div class="prod-chip">⚫ Black Channa <span>₹55/500g</span></div>
+        <div class="prod-chip">⚫ Horse Gram <span>₹30/250g</span></div>
+      </div>
+    </div>
+
+    <!-- Quote -->
+    <div class="intro-quote">
+      <blockquote>
+        "When the farmer thrives, the nation thrives.
+        When you eat pure, your family thrives.
+        We exist to make both happen — together."
+        <cite>— Farmers Point, Hubballi</cite>
+      </blockquote>
+    </div>
+
+    <!-- CTA -->
+    <div class="intro-cta">
+      <button class="btn-order-now" onclick="showOrderPage()">
+        🛒 &nbsp; Order Fresh Now
+      </button>
+    </div>
+
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════
+     ORDER PAGE
+══════════════════════════════════════════ -->
+<div id="page-order">
+  <button class="back-btn" onclick="showIntroPage()">&#8592; Back to About</button>
+
 
 <div class="header">
   <img class="logo-img" id="logoImg" alt="Farmers Point Logo">
@@ -228,17 +607,17 @@ document.getElementById('logoImg').src = 'data:image/png;base64,' + LOGO_B64;
 
 // ── PRODUCT DATA ──
 const items = [
-  { name: "\u0c39\u0c46\u0c38\u0c30\u0c41 \u0c2c\u0c47\u0c33\u0c46",       sub: "Green Gram Dal",      qty: "500g",  rate: 68,  unit: "/0.5 kg",   step: 500, unitLabel: "g"  },
-  { name: "\u0c24\u0c4a\u0c17\u0c30\u0c3f \u0c2c\u0c47\u0c33\u0c46",       sub: "Toor Dal",            qty: "500g",  rate: 65,  unit: "/0.5 kg",   step: 500, unitLabel: "g"  },
-  { name: "\u0c09\u0c26\u0c4d\u0c26\u0c3f\u0c28 \u0c2c\u0c47\u0c33\u0c46", sub: "Urad Dal",            qty: "500g",  rate: 65,  unit: "/0.5 kg",   step: 500, unitLabel: "g"  },
-  { name: "\u0c15\u0c21\u0c32\u0c46 \u0c2c\u0c47\u0c33\u0c46",             sub: "Chana Dal",           qty: "500g",  rate: 50,  unit: "0.5 kg",   step: 500, unitLabel: "g"  },
-  { name: "\u0c1c\u0c4b\u0c33",                                             sub: "Sorghum",             qty: "1 kg",  rate: 50,  unit: "/kg",   step: 1,   unitLabel: "kg" },
+  { name: "\u0c39\u0c46\u0c38\u0c30\u0c41 \u0c2c\u0c47\u0c33\u0c46",       sub: "Green Gram Dal",      qty: "500g",  rate: 68,  unit: "/kg",   step: 500, unitLabel: "g"  },
+  { name: "\u0c24\u0c4a\u0c17\u0c30\u0c3f \u0c2c\u0c47\u0c33\u0c46",       sub: "Toor Dal",            qty: "500g",  rate: 65,  unit: "/kg",   step: 500, unitLabel: "g"  },
+  { name: "\u0c09\u0c26\u0c4d\u0c26\u0c3f\u0c28 \u0c2c\u0c47\u0c33\u0c46", sub: "Urad Dal",            qty: "500g",  rate: 65,  unit: "/kg",   step: 500, unitLabel: "g"  },
+  { name: "\u0c15\u0c21\u0c32\u0c46 \u0c2c\u0c47\u0c33\u0c46",             sub: "Chana Dal",           qty: "500g",  rate: 50,  unit: "/kg",   step: 500, unitLabel: "g"  },
+  { name: "\u0c1c\u0c4b\u0c33",                                             sub: "Sorghum",             qty: "3 kg",  rate: 50,  unit: "/kg",   step: 1,   unitLabel: "kg" },
   { name: "\u0c1c\u0c35\u0c3e\u0c30\u0c3f \u0c2c\u0c3f\u0c33\u0c3f \u0c17\u0c4b\u0c27\u0c3f", sub: "Wheat",  qty: "1 kg", rate: 55, unit: "/kg", step: 1, unitLabel: "kg" },
   { name: "\u0c15\u0c41\u0c38\u0c41\u0c2c\u0c46 \u0c0e\u0c23\u0c4d\u0c23\u0c46", sub: "Safflower Oil", qty: "1 L",  rate: 350, unit: "/L",   step: 1,   unitLabel: "L"  },
   { name: "\u0c1c\u0c4b\u0c33\u0c26 \u0c30\u0c35\u0c46",                   sub: "Jowar Rava",          qty: "1 kg",  rate: 60,  unit: "/kg",   step: 1,   unitLabel: "kg" },
   { name: "\u0c17\u0c4b\u0c27\u0c3f \u0c30\u0c35\u0c46",                   sub: "Wheat Rava / Sooji",  qty: "1 kg",  rate: 56,  unit: "/kg",   step: 1,   unitLabel: "kg" },
-  { name: "\u0c15\u0c30\u0c3f \u0c15\u0c21\u0c32\u0c46",                   sub: "Black Channa",        qty: "500g",  rate: 55,  unit: "/0.5kg",   step: 500, unitLabel: "g"  },
-  { name: "\u0c15\u0c30\u0c3f \u0c39\u0c41\u0c30\u0c41\u0c33\u0c46",       sub: "Black Horse Gram",    qty: "250g",  rate: 30,  unit: "/0.25kg", step: 250, unitLabel: "g"  },
+  { name: "\u0c15\u0c30\u0c3f \u0c15\u0c21\u0c32\u0c46",                   sub: "Black Channa",        qty: "500g",  rate: 55,  unit: "/kg",   step: 500, unitLabel: "g"  },
+  { name: "\u0c15\u0c30\u0c3f \u0c39\u0c41\u0c30\u0c41\u0c33\u0c46",       sub: "Black Horse Gram",    qty: "250g",  rate: 30,  unit: "/100g", step: 250, unitLabel: "g"  },
 ];
 
 const quantities = new Array(items.length).fill(0);
@@ -257,13 +636,16 @@ function dispQtyStr(i) {
 
 function calcPrice(i) {
   const item = items[i];
-  const v = quantities[i];
-  if (item.unit === '/kg') {
-    if (item.step === 1) return v * item.rate;
-    return (v / 1000) * item.rate;
-  }
-  if (item.unit === '/L')    return v * item.rate;
-  if (item.unit === '/100g') return (v / 100) * item.rate;
+  const v = quantities[i];      // quantity in grams, kg, or L
+
+  // step=500 => rate is per 500g (0.5kg), multiply by how many 500g units
+  // step=250 => rate is per 250g (0.25kg), multiply by how many 250g units
+  // step=1, unitLabel=kg => rate is per 1kg, v is already in kg
+  // step=1, unitLabel=L  => rate is per 1L, v is already in L
+
+  if (item.unitLabel === 'g')  return (v / item.step) * item.rate;
+  if (item.unitLabel === 'kg') return v * item.rate;
+  if (item.unitLabel === 'L')  return v * item.rate;
   return 0;
 }
 
@@ -310,7 +692,7 @@ function renderCart() {
   const totalAmt = document.getElementById('totalAmount');
   const btn      = document.getElementById('orderBtn');
 
-  let html = '', total = 0.0, hasItems = false;
+  let html = '', total = 0, hasItems = false;
 
   items.forEach((item, i) => {
     if (quantities[i] > 0) {
@@ -333,7 +715,7 @@ function renderCart() {
   } else {
     cartDiv.innerHTML = html;
     totalDiv.style.display = 'flex';
-    totalAmt.textContent = '' + fmt(total);
+    totalAmt.textContent = '&#8377;' + fmt(total);
     btn.disabled = false;
   }
 }
@@ -403,6 +785,22 @@ function showToast(msg) {
 
 renderProducts();
 renderCart();
+
+function showOrderPage() {
+  document.getElementById('page-intro').style.display = 'none';
+  document.getElementById('page-order').style.display = 'block';
+  window.scrollTo(0, 0);
+}
+function showIntroPage() {
+  document.getElementById('page-order').style.display = 'none';
+  document.getElementById('page-intro').style.display = 'block';
+  window.scrollTo(0, 0);
+}
+// Copy logo to intro page
+document.getElementById('introLogoImg').src = 'data:image/png;base64,' + LOGO_B64;
+
 </script>
+
+</div><!-- end #page-order -->
 </body>
 </html>
