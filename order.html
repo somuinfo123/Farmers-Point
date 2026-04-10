@@ -401,14 +401,14 @@ function sendOrder() {
   }
   const nameStr = name ? '*Name:* ' + name + '\n' : '';
   const phoneStr = '*Phone:* ' + phone + '\n';
- // const upiLink = "upi://pay?pa=yourupi@okaxis&pn=FarmersPoint&am=" + fmt(total) + "&cu=INR";
+  const upiLink = "upi://pay?pa=yourupi@okaxis&pn=FarmersPoint&am=" + fmt(total) + "&cu=INR";
   const shopPhone = '918722095639';
   const msg = 'Farmers Point - New Order\n\n' + nameStr + phoneStr + '\n' + orderLines.join('\n') +
     '\n\n*Total: Rs.' + fmt(total) + '*' +
     '\n\n_Sent via Farmers Point Order Page_' +
-   '\nPlease pay using below link:\n' + upiLink +
-   "\n\nAmount is already filled. Please don\u2019t change it \U0001F64F";
-  window.open('https://wa.me/' + shopPhone + '?text=' + encodeURIComponent(msg), '_blank');
+    '\nPlease pay using below link:\n' + upiLink +
+    "\n\nAmount is already filled. Please don\u2019t change it \U0001F64F";
+  location.href = 'https://wa.me/' + shopPhone + '?text=' + encodeURIComponent(msg);
 }
 
 function showToast(msg) {
